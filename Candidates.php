@@ -75,6 +75,33 @@ class Candidates extends DBManager {
 		 
 		Response::sendHeader($rows, 200);
 	}
+
+	public function getReview($id) {
+		$checkId = $this->isIdExist($id);
+		if(!$checkId) {
+			throw new Exception("Not Found", 404);
+		}
+		$stmt = $this->dbh->prepare("SELECT * FROM candidates WHERE id=:id ");
+		$stmt->setFetchMode(PDO::FETCH_ASSOC);
+		$stmt->execute(array(":id"=>$id));
+		$row = $stmt->fetch();
+	
+		Response::sendHeader($row, 200);
+	}
+
+	public function getSearch($id) {
+		$checkId = $this->isIdExist($id);
+		if(!$checkId) {
+			throw new Exception("Not Found", 404);
+		}
+		$stmt = $this->dbh->prepare("SELECT * FROM candidates WHERE id=:id ");
+		$stmt->setFetchMode(PDO::FETCH_ASSOC);
+		$stmt->execute(array(":id"=>$id));
+		$row = $stmt->fetch();
+	
+		Response::sendHeader($row, 200);
+	}
+	
 	
 	/*
 	 * Check is record exist in DB

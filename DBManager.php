@@ -5,6 +5,9 @@ abstract class DBManager {
 	protected $user = "root";
 	protected $pass = "";
 	
+	/*
+	 * Handle DB connection
+	 */
 	public function __construct() {
 		try {
 			// MySQL with PDO_MYSQL
